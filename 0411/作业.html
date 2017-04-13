@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		#tab{
+			display:flex;
+		}
+		#tab div{
+			flex:1;
+			height:30px;
+			line-height:30px;
+			
+			text-align: center;
+			list-style: none;
+		}
+		.active{
+			border-bottom: 1px solid red;
+			background:pink;
+		}
+	</style>
+	<body>
+		<div ng-controller="kong">
+			<div id="tab">
+				<div ng-click="getDiv(1)" ng-class="{'active':page1}">1</div>
+				<div ng-click="getDiv(2)" ng-class="{'active':page2}">2</div>			
+			</div>			
+			<div ng-switch="page">
+			   	 <p ng-switch-when="1">第一页</p>
+			   	 <p ng-switch-when="2">第二页</p>
+			   </div>
+		</div>		
+	</body>
+	<script src="js/angular.js"></script>
+	<script>
+		var app=angular.module('demo',[]);
+		app.controller('kong',function($scope){
+			
+			$scope.page=1;
+			$scope.page1=true;
+			$scope.page2=false;
+			$scope.getDiv=function(page){
+				if(page==1){
+					$scope.page=1;
+					$scope.page1=true;
+			        $scope.page2=false;
+				}else{
+					$scope.page=2;
+					$scope.page1=false;
+			        $scope.page2=true;
+				}
+			}
+			
+		})
+	</script>
+</html>

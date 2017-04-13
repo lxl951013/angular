@@ -1,9 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="demo">
 	<head>
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<style>
+		.fontSize{
+			font-size: 26px;
+			color:deeppink;
+		}
+		.bgcolor{
+			background:yellow;
+		}
+	</style>
 	<body>
+		<div ng-controller="kong1">
+			<p style="color:{{color}}">指令 np-app</p>
+			    <!--定义模块-->
+			
+			
+			<p style="color:{{color}}">指令 np-conroller</p>
+			    <!--定义控制器（作用域）-->
+			
+						
+			<p style="color:{{color}}">指令 np-bind</p>
+			    <!--标签有np-bind属性时，加载html时不会加载此属性，
+			        直到加载js时才会引入到html中    -->			 
+			    <p ng-bind="name"></p>			
+			    <p>{{name}}</p><!--页面刷新时显示{{}}-->
+			
+			
+			<p style="color:{{color}}">指令 np-init</p>
+			    <!--标签有ng-init（初始化）指令时，模块层就可以不用再写了-->
+			    <p ng-init="love='xiuxiu'">{{love}}</p>
+			
+			
+			<p style="color:{{color}}">指令 np-click</p>
+			    <!--标签有ng-click指令时，调用函数-->
+			    <button ng-click="getNum()">ok</button>
+			
+			
+			<p style="color:{{color}}">指令 np-model</p><br />
+			<!--放在input、select、textarea上，获得用户输入的值-->
+			    <!--//1)input-->
+			    <input type="text" ng-model="text"/> 
+			    <button ng-click="getText()">gettext</button>
+			    <input type="text" ng-model="text" />
+			    <p>{{text}}</p>
+			    
+			    <!-- //2)select-->
+			    <select ng-model="num">    	
+			    	<option value="red">10</option>
+			    	<option value="blue">20</option>
+			    	<option value="green">30</option>		    			    
+			    </select>
+			    <input type="range" ng-model="size"/>
+			    <p style="color:{{num}};font-size:{{size+'px'}}">{{num}}</p>
+			    <!--1.从模块获得默认num=red	size=16
+			    2.然后赋予到此-->
+			    
+			    <!-- //3)textarea-->
+			    <textarea ng-model="text"></textarea>
+			    
+			    
+			<p style="color:{{color}}">指令 np-repeat</p> 
+			    <!--放在li、option、tr上，复制当前
+			    	for...in
+			        每遍历一个attr生成一个li
+			    -->
+			    <ul>
+			    	<li ng-repeat="a in arr">{{a}}</li>
+			    </ul>
+			    
+			    <select>
+			    	<option ng-repeat="a in arr" value="{{a}}">{{a}}</option>
+			    </select>
+			    
+			    <table>
+			    	<tr>
+			    		<td>name</td>
+			    		<td>age</td>
+			    	</tr>
+			    	<tr ng-repeat='a in arrs'>
+			    		<td>{{a.name}}</td>
+			    		<td>{{a.age}}</td>
+			    	</tr>
+			    </table>
+			    
+			    
+			<p style="color:{{color}}">指令 np-show</p> 
+			   <!-- np-show的值为真，显示，假，隐藏
+			   	本质就是改变display属性值 -->		   
+			   <p ng-show="bool">ng-show显示</p>
+			   
+			<p style="color:{{color}}">指令 np-hide</p> 
+			   <!--np-show的值为真，隐藏，假，显示-->
+			   <p ng-hide="!bool">ng-hide显示</p>
+			   
+			<p style="color:{{color}}">指令 np-if</p> 
+			   <p ng-if="bool">ng-if显示</p>
+			 
+			 
+			<p style="color:{{color}}">指令 np-class</p> 
+			   <p ng-class="{'fontSize':bool,'bgcolor':bool}">np-class测试</p>
+			   <p class="{{bool?'fontSize':''}}">ng-class的测试</p>
+			
+			
+			<p style="color:{{color}}">指令 np-style</p> 
+			   <input type="range" ng-model="size"/>
+			   <p ng-style="{color:'red',fontSize:size+'px'}">ng-style测试</p>
+			
+			
+			<p style="color:{{color}}">指令 np-src</p> 
+			   <img ng-src="{{src}}" />
+			
+			
+			
+			<p style="color:{{color}}">指令 np-href</p> 
+			   <a ng-href="{{src}}">点击图片</a>
+			
+			
+			<p style="color:{{color}}">指令 np-switch</p> 
+			   <select ng-model="page">
+			   	  <option value="1">1</option>
+			   	  <option value="2">2</option>
+			   	  <option value="3">3</option>
+			   </select>
+			   <button ng-click="page='1'">ok</button>
+			   <div ng-switch="page">
+			   	 <p ng-switch-when="1">第一页</p>
+			   	 <p ng-switch-when="2">第二页</p>
+			   	 <p ng-switch-when="3">第三页</p>
+			   </div>
+			  
+		</div>
 	</body>
+	<script src="js/angular.js"></script>
+	<script>
+	    //MVC框架
+		var app=angular.module("demo",[]);
+		//控制器
+		app.controller("kong1",function($scope){
+			$scope.color="red";
+			$scope.name="xiuxiu";
+			$scope.getNum=function(){
+				$scope.name='xilong';
+			};
+			$scope.text="";
+			$scope.num='red';
+			$scope.size=16;
+			$scope.getText=function(){
+				console.log($scope.text);
+			};
+			$scope.arr=['a','b','c','d','e','f'];
+			$scope.arrs=[{
+				name:'yixiu',
+				age:18,
+			},{
+				name:'minyi',
+				age:18,
+			},{
+				name:'xilong',
+				age:19,
+			}];
+			$scope.bool=true;
+			$scope.src="image/laoxie.jpg";
+			$scope.page="1";
+			
+			
+			
+		})
+	</script>
 </html>

@@ -18,26 +18,32 @@
 		<div ng-controller="indexCtrl">
 			<!--view-->
 			<!--$().text()-->
-			<p style="color: red;">ng-bind</p>
+	    <p style="color: red;">ng-bind</p>
 			<p ng-bind="name"></p>
-			<p style="color: red;">ng-model</p>
+			
+			
+	    <p style="color: red;">ng-model</p>		
 			<p style="color: blue;">1)input</p>
 			<!--$().val()-->
 			<input type="text" ng-model="text" />
 			<button ng-click="getText()">GetText</button>
 			<input type="text" ng-model="name" />
 			<p>{{name}}</p>
+						
 			<p style="color: blue;">2)textarea</p>
 			<textarea ng-model="name"></textarea>
+						
 			<p style="color: blue;">3)select</p>
 			<select ng-model="num">
 				<option value="red">1</option>
 				<option value="blue">2</option>
 				<option value="yellow">3</option>
-			</select>
+			</select>		
 			<input type="range" ng-model="size" />
 			<p style="color:{{num}};font-size:{{size+'px'}}">{{num}}</p>
-			<p style="color: red;">ng-repeat</p>
+			
+			
+		<p style="color: red;">ng-repeat</p>
 			<!--ng-repeat ul select table-->
 			<ul>
 				<!--for in-->
@@ -58,29 +64,33 @@
 				</tr>
 			</table>
 			<p ng-repeat="ar in arrs">你的名字是:{{ar.name}} 你的年龄是:{{ar.age}}</p>
-			<p style="color: red;">ng-init</p>
+			
+		<p style="color: red;">ng-init</p>
 			<p ng-init="init='abccba'">{{init}}</p>
-			<p style="color: red;">ng-show</p>
+			
+		<p style="color: red;">ng-show</p>
 			<p ng-show="!bool">Hello World</p>
 			<!--ng-show的本质就是改变display属性值-->
 			<p style="display: {{!bool?'block':'none'}};">Hello World</p>
+			
 			<button ng-click="changeState()">Ok</button>
-			<p style="color: red;">ng-hide</p>
+		<p style="color: red;">ng-hide</p>
 			<p ng-hide="!bool">Hello World</p>
-			<p style="color: red;">ng-if</p>
+			
+		<p style="color: red;">ng-if</p>
 			<p ng-if="!bool">Hello World</p>
 
-			<p style="color: red;">ng-class</p>
+		<p style="color: red;">ng-class</p>
 			<p ng-class="{'fsize':bool,'bgcolor':bool}">ng-class的测试</p>
 			<p class="{{bool?'fsize':''}}">ng-class的测试</p>
 
-			<p style="color: red;">ng-style</p>
+		<p style="color: red;">ng-style</p>
 			<!--css() font-size-->
 			<input ng-model="size" type="range" />
 			<p ng-style="{color:'red',fontSize:size+'px'}">ng-style测试</p>
 			<p style="font-size:{{size}}px">ng-style测试</p>
 
-			<p style="color: red;">ng-src</p>
+		<p style="color: red;">ng-src</p>
 			<!--ng-src="{{}}"-->
 			<!--%7B%7Bsrc%7D%7D==={{src}}-->
 			<!---->
@@ -88,12 +98,12 @@
 			<!--src = image/laoxie.jpg" /><img src="image/laoxie.jpg-->
 			<!--ng-bind vs {{}}-->
 
-			<p style="color: red;">ng-href</p>
+		<p style="color: red;">ng-href</p>
 			<!--<link />
 			<a></a>-->
 			<a ng-href="{{src}}">点击图片</a>
 
-			<p style="color: red;">ng-switch</p>
+		<p style="color: red;">ng-switch</p>
 			<select ng-model="page">
 				<option value="1">1</option>
 				<option value="2">2</option>
