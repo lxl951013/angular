@@ -1,8 +1,27 @@
-<div>
-	<ul>
-		<li><a href=""></a></li>
-		<li><a href=""></a></li>
-		<li><a href=""></a></li>
-	</ul>
-
+<div class="page article js_show">
+	
+<div class="page__bd">
+		<article class="weui-article">
+			<h1>{{news.channelName}}</h1>
+			<section>
+				<h2 class="title">{{news.title}}</h2>
+				<section>
+					<h3>全球网</h3>
+					<p>
+						{{news.desc}}
+					</p>
+					<p>
+						<img ng-src="{{news.imageurls[0].url}}" alt="">
+					</p>
+				</section>
+				<!--<section>
+					<h3>1.2 节标题</h3>
+					<p>
+						{{news.text}}
+					</p>
+				</section>-->
+			</section>
+		</article>
+	</div>
+	<xload></xload>
 </div>

@@ -32,4 +32,10 @@
 			templateUrl: "directives/wlist.html",
 		}
 	})
+	//loading
+	directives.directive("wloading", function() {
+		return {
+			templateUrl: "directives/wloading.html",
+		}
+	})
 })();

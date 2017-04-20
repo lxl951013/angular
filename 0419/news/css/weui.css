@@ -1200,6 +1200,8 @@ button.weui-vcode-btn {
   bottom: 0;
   width: 100%;
   background-color: #F7F7FA;
+  position: fixed;
+  bottom: 0;
 }
 .weui-tabbar:before {
   content: " ";

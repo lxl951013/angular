@@ -12,6 +12,8 @@
 		line-height: 53px;
 		background:#ed4040;
 		text-align: center;
+		position: fixed;
+		top:0;
 	}
 	
 	.weui-wheader p {
@@ -51,4 +53,5 @@
 //底部	
 .weui-tabbar {
 		position: fixed;
+		bottom: 0;
 	}
