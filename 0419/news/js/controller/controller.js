@@ -18,6 +18,18 @@
 		   $scope.djAlert=function(){
 		   	  $scope.isShowdialog=true;
 		   }
+		   
+		   $scope.searchName = "";
+		   //搜索框
+		   $scope.isShowSearchBar = false;
+		   $scope.showSearchBar = function(){
+			   $scope.isShowSearchBar = true;
+		   }
+		   //清空搜索框
+		   $scope.searchClear=function(){
+		   	   $scope.searchName = "";
+		   }
+		   
 		   //加载更多
 		   $scope.page=0;
 		   $scope.arr=[];
@@ -260,5 +272,11 @@
 		    	
 
 		    })
+		    
+		    //点击图片放大
+		    $scope.isShow=false;
+		    $scope.showIMG=function(){
+		    	$scope.isShow=true;
+		    }
 	});
 })();	  

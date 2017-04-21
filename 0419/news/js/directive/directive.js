@@ -30,12 +30,12 @@
 	});
 	
 	//推荐页搜索框组件
-//	directives.directive('xsearch',function(){
-//		return {
-//		   		templateUrl:'directive/xsearch.html'	
-//		}
-//	});
-//	
+	directives.directive('xsearch',function(){
+		return {
+		   		templateUrl:'directive/xsearch.html'	
+		}
+	});
+	
 	
 	//推荐页轮播图组件
     directives.directive('lunbotu',function(){

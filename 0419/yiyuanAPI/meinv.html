@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	</head>
+    <link rel="stylesheet" href="css/weui.css" />
+	<body>
+		<div ng-controller="indexCtrl">
+			<div class="page__bd" ng-repeat="attr in arr">
+			    <article class="weui-article" >
+				<h1>{{attr.title}}</h1>
+					<!--<h2 class="title">章标题</h2>-->
+						<p>
+							{{attr.description}}
+						</p>
+						<p>
+							<img ng-src="{{attr.picUrl}}" alt="">
+						</p>
+			    </article>
+		    </div>
+			<button ng-click="loadMore()" style="display:{{isShow?'none':'block'}};height:30px;background:pink;border: none;">查看更多</button>
+			
+			<div class="weui-loadmore" ng-show="isShow">
+		        <i class="weui-loading"></i>
+		        <span class="weui-loadmore__tips">正在加载</span>
+	        </div>
+		</div>
+	</body>
+	<script src="js/angular.js"></script>
+	<script>
+		var app=angular.module('demo',[]);
+		app.controller('indexCtrl',function($scope,$http){
+			$scope.page=1;
+			$scope.arr=[];
+			$scope.isShow=false;
+			
+			$scope.loadMore=function(){
+				$scope.isShow=true;
+				$http({
+				    url:"http://localhost/angular/0419/yiyuanAPI/meinv.php",
+				    method:'GET',
+				    params:{
+				    	page:$scope.page++
+				    }		
+			   }).then(function(data){
+			   	$scope.isShow=false;
+			   	$scope.arr=$scope.arr.concat(data.data.showapi_res_body.newslist)
+			   	
+			   })
+			}
+			$scope.loadMore();
+		})
+	</script>
+
+</html>

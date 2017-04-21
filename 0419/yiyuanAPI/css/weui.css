@@ -1200,8 +1200,6 @@ button.weui-vcode-btn {
   bottom: 0;
   width: 100%;
   background-color: #F7F7FA;
-  position: fixed;
-  bottom: 0;
 }
 .weui-tabbar:before {
   content: " ";
@@ -2053,7 +2051,6 @@ a.weui-media-box:active {
   display: flex;
   box-sizing: border-box;
   background-color: #EFEFF4;
-       margin-top:53px;
 }
 .weui-search-bar:before {
   content: " ";

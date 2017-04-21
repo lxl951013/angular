@@ -11,11 +11,11 @@
 						{{news.desc}}
 					</p>
 					<p>
-						<img ng-src="{{news.imageurls[0].url}}" alt="">
+						<img ng-click="showIMG()" ng-src="{{news.imageurls[0].url}}" alt="">
 					</p>
 				</section>
 				<!--<section>
-					<h3>1.2 节标题</h3>
+					<h3>1.2 节标题</h3>.
 					<p>
 						{{news.text}}
 					</p>
@@ -24,4 +24,13 @@
 		</article>
 	</div>
 	<xload></xload>
+	<div class="weui-gallery" style="display: {{isShow?'block':'none'}};">
+		<span class="weui-gallery__img" style="background-image: url({{news.imageurls[0].url}});"></span>
+		<div class="weui-gallery__opr">
+			<a href="javascript:" ng-click="isShow=false" class="weui-gallery__del">
+				<!--<i class="weui-icon-delete weui-icon_gallery-delete">隐藏</i>-->
+				<p style="color: white;">隐藏</p>
+			</a>
+		</div>
+	</div>
 </div>
