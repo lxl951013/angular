@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app='demo'>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<link rel="stylesheet" href="css/ionic.css" />
+
+	<body ng-controller="indexCtrl">
+		<!--头部-->
+		<ion-header-bar align-title="center" class="bar-positive">
+			<h1 class="title">美女图片</h1>
+		</ion-header-bar>
+		    <div class="list">
+		    	<p>12132</p>
+		    </div>
+		<!--内容主题部分-->
+		<ion-content scroll="true" padding="false">
+			
+			<a ng-repeat="attr in arr" class="item item-thumbnail-left" >
+					<img ng-src="{{attr.list[0].middle}}">
+					<h2>{{attr.typeName}}</h2>
+					<p>{{attr.title}}</p>
+				</a>
+			
+			
+			<ion-infinite-scroll on-infinite="loadMore()"></ion-infinite-scroll>
+		</ion-content>
+		
+		
+		
+		<!--底部-->
+		<ion-footer-bar class="bar-positive"></ion-footer-bar>
+	</body>
+	<script src="js/ionic.bundle.js"></script>
+	<script>
+		var app=angular.module('demo',['ionic']);		
+		app.controller('indexCtrl',function($scope,$http){
+			$scope.page=1;
+			$scope.arr=[];
+			
+			$scope.loadMore=function(){
+				$http({
+					url:"http://localhost/angular/0421/ionic/tuji.php",
+					method:"GET",
+					params:{
+						page:$scope.page++
+					}
+				}).then(function(data){
+					$scope.arr=$scope.arr.concat(data.data.showapi_res_body.pagebean.contentlist);
+					console.log($scope.arr);
+					$scope.$broadcast('scroll.refreshComplete');
+					$scope.$broadcast('scroll.infiniteScrollComplete');
+				})
+				
+			}
+		})
+		
+	</script>
+</html>
