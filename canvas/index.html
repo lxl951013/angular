@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			#canvas{
+				background:pink;
+				margin: 0 auto;
+				border: solid 2px black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="500" ></canvas>
+	</body>
+	<script>
+	    //
+		var canval=document.querySelector("#canvas");
+		//
+		var ctr=canvas.getContext("2d");
+		//
+		canvas.onmousedown=function(e){
+			ctr.strokeStyle='red';
+			ctr.moveTo(e.clientX,e.clientY);
+			
+			canvas.onmousemove=function(e){
+				ctr.lineTo(e.clientX,e.clientY);
+				ctr.stroke();
+			}
+		}
+		canvas.onmouseup=function(e){
+			canvas.onmousemove=null;
+		}
+	</script>
+</html>
